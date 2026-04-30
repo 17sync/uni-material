@@ -1,0 +1,297 @@
+Build a complete full-stack web application for a "Parking Management System" using:
+
+Frontend: HTML, CSS, JavaScript (or React for better UI)
+Backend: PHP (Core PHP, no frameworks)
+Database: MySQL
+
+The system must be production-level, have a clean modern UI, proper folder structure, secure coding practices, and follow MVC architecture if possible.
+
+========================
+📌 PROJECT OVERVIEW
+========================
+
+The Parking Management System allows users to:
+- Register and login
+- View available parking slots
+- Park/register vehicles
+- Track entry and exit times
+- View parking history
+- Make payments for parking
+- Check parking slot availability
+
+Admin can:
+- Manage parking slots
+- Manage vehicles and parking records
+- Manage users
+- Monitor occupied/free slots
+- View payments
+- Generate parking reports and analytics
+
+========================
+📊 DATABASE DESIGN (VERY IMPORTANT)
+========================
+
+Use the attached ERD as the database reference and implement the schema in MySQL.
+
+Entities and attributes:
+
+1. ParkingLot
+   - lotID (PK)
+   - lotName
+   - capacity
+   - location
+
+2. ParkingSlot
+   - slotID (PK)
+   - slotNumber
+   - location
+   - status
+
+3. Vehicle
+   - vehicleID (PK)
+   - licensePlate
+   - vehicleType
+   - ownerName
+
+4. ParkingRecord
+   - recordID (PK)
+   - vehicleID (FK)
+   - slotID (FK)
+   - entryTime
+   - exitTime
+
+5. Payment
+   - paymentID (PK)
+   - recordID (FK)
+   - paymentMethod
+   - paymentTime
+   - amount
+
+Relationships:
+- One ParkingLot contains many ParkingSlots (1-M)
+- One ParkingSlot can have many ParkingRecords over time (1-M)
+- One Vehicle can have many ParkingRecords (1-M)
+- One ParkingRecord generates one Payment (1-1)
+- Vehicles park in ParkingSlots
+- Payments are assigned to parking records
+
+Constraints:
+- Enforce foreign keys
+- Prevent assigning occupied slots
+- Prevent duplicate active parking records for the same vehicle
+- Amount must be positive
+- License plate should be unique
+- Exit time cannot be earlier than entry time
+
+========================
+💾 DATABASE IMPLEMENTATION (MYSQL)
+========================
+
+Provide:
+- Full SQL script with CREATE TABLE statements
+- INSERT sample data (at least 10 records per table)
+- Use:
+  - SELECT queries
+  - INNER JOIN, LEFT JOIN
+  - GROUP BY and aggregate functions
+  - Subqueries (e.g., most used parking slot)
+  - Views (e.g., parking summary view)
+  - Indexes (on licensePlate, slotID, entryTime)
+  - UPDATE and DELETE examples
+  - Triggers or logic to update slot status automatically
+
+Include advanced SQL features such as:
+- Revenue reports
+- Daily parking statistics
+- Active parked vehicles
+- Most frequently used slots
+
+========================
+🖥 BACKEND (PHP)
+========================
+
+- Connect MySQL using mysqli or PDO
+- Secure authentication system:
+  - Password hashing
+  - Sessions for login
+- CRUD operations for:
+  - Parking slots
+  - Vehicles
+  - Parking records
+  - Payments
+  - Users
+- Dynamic queries for:
+  - Search vehicles by license plate
+  - Search parking records
+  - Filter slots by status/location
+- Prevent SQL injection using prepared statements
+- Proper error handling and validation
+
+Backend functionality should include:
+- Vehicle entry registration
+- Vehicle exit processing
+- Automatic parking fee calculation
+- Slot assignment logic
+- Payment processing simulation
+- Dashboard statistics generation
+
+========================
+🎨 FRONTEND
+========================
+
+Create a modern responsive UI with:
+
+Pages:
+- Home page
+- Login/Register page
+- User dashboard
+- Admin dashboard
+- Parking slot management page
+- Vehicle registration page
+- Parking records page
+- Payment page
+- Reports page
+
+Features:
+- Responsive design
+- Navigation bar + sidebar
+- Forms with JS + PHP validation
+- Tables with search and filters
+- Dashboard cards and charts
+- Status indicators for slots (Occupied/Available)
+- Notifications/messages for successful operations
+
+========================
+🔐 MANDATORY FEATURES
+========================
+
+1. Authentication System
+   - Login/Logout
+   - Role-based access (admin/user)
+
+2. Parking Slot Management
+   - Add, update, delete parking slots
+   - View available and occupied slots
+   - Automatic slot status updates
+
+3. Vehicle Management
+   - Register vehicles
+   - Search by license plate
+   - View parking history
+
+4. Parking Operations
+   - Vehicle check-in
+   - Vehicle check-out
+   - Generate parking records
+   - Prevent duplicate active parking sessions
+
+5. Payment System
+   - Calculate parking charges based on duration
+   - Store payment details
+   - View payment history
+
+6. Reports & Analytics
+   - Total parked vehicles
+   - Total revenue
+   - Active parking sessions
+   - Most used parking slots
+   - Daily/weekly parking reports
+
+7. Dashboard
+   - Total vehicles
+   - Total slots
+   - Occupied slots
+   - Available slots
+   - Revenue statistics
+   - Recent parking activities
+
+========================
+📂 PROJECT STRUCTURE
+========================
+
+Organize files like:
+
+/config
+    database connection files
+
+/models
+    database models
+
+/views
+    frontend pages
+
+/controllers
+    business logic
+
+/assets
+    /css
+    /js
+    /images
+
+/includes
+    reusable components (navbar, sidebar, footer)
+
+/sql
+    database scripts
+
+/auth
+    login/logout/session handling
+
+========================
+📄 DOCUMENTATION OUTPUT
+========================
+
+Also generate:
+
+1. Explanation of:
+   - Entities
+   - Relationships
+   - Constraints
+
+2. List of SQL queries used
+
+3. Project report containing:
+   - Problem description
+   - Objectives
+   - System features
+   - Database implementation
+   - Backend architecture
+   - Frontend design
+   - Security measures
+   - Testing
+
+4. Step-by-step setup guide for:
+   - XAMPP/WAMP setup
+   - Database import
+   - Running the project locally
+
+========================
+⚡ EXTRA REQUIREMENTS
+========================
+
+- Clean and readable code
+- Proper comments in code
+- Secure inputs and validations
+- Production-style UI
+- Responsive design
+- Error handling
+- Use prepared statements
+- Session management
+- Ready to run locally on XAMPP/WAMP
+- Modular and scalable codebase
+
+========================
+🎯 FINAL OUTPUT
+========================
+
+Provide:
+- Full working frontend + backend code
+- Complete SQL file
+- Fully implemented MySQL database
+- PHP authentication system
+- CRUD operations for all modules
+- Dashboard and reports
+- Setup instructions
+- Documentation and explanations
+
+The system must be fully functional, complete, and ready to run locally.
